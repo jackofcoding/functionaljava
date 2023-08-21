@@ -1,4 +1,4 @@
-package functional.streams.samples;
+package functional.streams.example;
 
 import functional.model.Person;
 import java.time.LocalDate;
@@ -26,24 +26,27 @@ public class CollectorsPractice {
     return words.stream()
         .filter(Objects::nonNull)
         .collect(
-            Collectors.groupingBy(e -> Collections.frequency(words, e), HashMap::new, Collectors.toSet()));
+            Collectors.groupingBy(
+                e -> Collections.frequency(words, e), HashMap::new, Collectors.toSet()));
   }
 
   public Map<String, Integer> getPersonFullNameAndAge(List<Person> people) {
     // Assumption: no field of model is null
-    return people.stream().collect(
-        Collectors.toMap(
-            person -> String.join(" ", person.getFirstName(), person.getLastName()),
-            person -> Period.between(person.getDateOfBirth(), LocalDate.now()).getYears()
-        ));
+    return people.stream()
+        .collect(
+            Collectors.toMap(
+                person -> String.join(" ", person.getFirstName(), person.getLastName()),
+                person -> Period.between(person.getDateOfBirth(), LocalDate.now()).getYears()));
   }
 
   public Map<Boolean, List<String>> partitionPeopleByAgeGroupAbove18(List<Person> people) {
     // Assumption: no field of model is null
-    return people.stream().collect(Collectors.partitioningBy(
-        person -> Period.between(person.getDateOfBirth(), LocalDate.now()).getYears() >= 18,
-        Collectors.mapping(
-            person -> String.join(" ", person.getFirstName(), person.getLastName()),
-            Collectors.toList())));
+    return people.stream()
+        .collect(
+            Collectors.partitioningBy(
+                person -> Period.between(person.getDateOfBirth(), LocalDate.now()).getYears() >= 18,
+                Collectors.mapping(
+                    person -> String.join(" ", person.getFirstName(), person.getLastName()),
+                    Collectors.toList())));
   }
 }

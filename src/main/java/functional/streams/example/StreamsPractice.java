@@ -1,4 +1,4 @@
-package functional.streams.samples;
+package functional.streams.example;
 
 import functional.enums.EmployeeTypeCode;
 import java.util.ArrayList;
@@ -50,9 +50,6 @@ public class StreamsPractice {
         .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
   }
 
-  /*
-     Same as above, but with collectors
-   */
   public List<Integer> multiplyElementsWithCollector(List<Integer> integers, int multiple) {
     // TODO: Range problem
     Objects.requireNonNull(integers, "list must not be null");
@@ -144,9 +141,9 @@ public class StreamsPractice {
         .filter(
             word ->
                 Objects.nonNull(word)
-                  && Objects.nonNull(suffix)
-                  && !word.isBlank()
-                  && !suffix.isBlank())
+                    && Objects.nonNull(suffix)
+                    && !word.isBlank()
+                    && !suffix.isBlank())
         .map(word -> String.join(" ", word, suffix))
         .toList();
   }
@@ -160,8 +157,7 @@ public class StreamsPractice {
             word -> {
               String onlyDigits = word.replaceAll("\\D", "");
               return onlyDigits.substring(onlyDigits.length() - 10);
-          })
+            })
         .toList();
   }
-
 }

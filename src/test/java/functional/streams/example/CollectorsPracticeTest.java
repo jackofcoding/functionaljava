@@ -1,4 +1,4 @@
-package functional.streams.samples;
+package functional.streams.example;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -21,7 +21,8 @@ class CollectorsPracticeTest {
   }
 
   @Test
-  void test_get_words_frequency_should_return_map_with_correct_frequency_when_valid_list_is_passed() {
+  void
+      test_get_words_frequency_should_return_map_with_correct_frequency_when_valid_list_is_passed() {
     List<String> words = List.of("apple", "zebra", "oranges", "oranges");
     Map<String, Long> frequencyMap = collectorsPractice.getWordsFrequency(words);
     Map<String, Long> resultantMap = Map.of("apple", 1L, "zebra", 1L, "oranges", 2L);
@@ -35,7 +36,8 @@ class CollectorsPracticeTest {
   }
 
   @Test
-  void test_group_words_by_frequency_should_return_map_with_correct_frequency_when_valid_list_is_passed() {
+  void
+      test_group_words_by_frequency_should_return_map_with_correct_frequency_when_valid_list_is_passed() {
     List<String> words = List.of("apple", "zebra", "oranges", "oranges");
     Map<Integer, Set<String>> frequencyMap = collectorsPractice.groupWordsByFrequency(words);
     Map<Integer, Set<String>> resultantMap =
@@ -50,7 +52,8 @@ class CollectorsPracticeTest {
   }
 
   @Test
-  void test_get_person_full_name_and_age_should_return_map_with_name_and_age_when_valid_list_is_passed() {
+  void
+      test_get_person_full_name_and_age_should_return_map_with_name_and_age_when_valid_list_is_passed() {
     List<Person> people = SampleDataProvider.getPeople().stream().limit(5).toList();
     assertThat(collectorsPractice.getPersonFullNameAndAge(people))
         .isEqualTo(
@@ -69,30 +72,32 @@ class CollectorsPracticeTest {
   }
 
   @Test
-  void test_partition_people_by_age_group_above_18_should_return_name_in_correct_group_when_valid_list_is_passed() {
+  void
+      test_partition_people_by_age_group_above_18_should_return_name_in_correct_group_when_valid_list_is_passed() {
     assertThat(collectorsPractice.partitionPeopleByAgeGroupAbove18(SampleDataProvider.getPeople()))
         .isEqualTo(
             Map.of(
                 true,
-                    List.of(
-                        "Jane Doe",
-                        "Jason Smith",
-                        "Anton Jackson",
-                        "Arthur Flintstone",
-                        "Mary Stewart",
-                        "Kevin Malone",
-                        "Jim Patrick",
-                        "Lori Jamieson"),
+                List.of(
+                    "Jane Doe",
+                    "Jason Smith",
+                    "Anton Jackson",
+                    "Arthur Flintstone",
+                    "Mary Stewart",
+                    "Kevin Malone",
+                    "Jim Patrick",
+                    "Lori Jamieson"),
                 false,
                 List.of("Mary Jane", "Prince Ray", "Samuel Jackson")));
   }
 
   @Test
-  void test_partition_people_by_age_group_above_18_should_return_map_with_empty_list_when_empty_list_is_passed() {
+  void
+      test_partition_people_by_age_group_above_18_should_return_map_with_empty_list_when_empty_list_is_passed() {
     assertThat(collectorsPractice.partitionPeopleByAgeGroupAbove18(Collections.emptyList()))
         .isEqualTo(
             Map.of(
-            true, Collections.emptyList(),
-            false, Collections.emptyList()));
+                true, Collections.emptyList(),
+                false, Collections.emptyList()));
   }
 }

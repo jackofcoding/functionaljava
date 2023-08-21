@@ -63,7 +63,6 @@ public class SampleDataProvider {
             .withFirstName("Samuel")
             .withLastName("Jackson")
             .withDateOfBirth(LocalDate.of(2007, Month.OCTOBER, 3))
-            .build()
-    );
+            .build());
   }
 }
