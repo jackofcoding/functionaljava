@@ -50,9 +50,6 @@ public class StreamsPractice {
         .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
   }
 
-  /*
-    Same as above, but with collectors
-   */
   public List<Integer> multiplyElementsWithCollector(List<Integer> integers, int multiple) {
     // TODO: Range problem
     Objects.requireNonNull(integers, "list must not be null");
@@ -163,5 +160,4 @@ public class StreamsPractice {
             })
         .toList();
   }
-
 }

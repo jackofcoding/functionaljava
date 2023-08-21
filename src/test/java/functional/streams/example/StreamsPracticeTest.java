@@ -70,7 +70,8 @@ class StreamsPracticeTest {
   }
 
   @Test
-  void test_factors_of_five_should_return_true_when_all_are_multiples_of_5_and_has_null_element_passed() {
+  void
+      test_factors_of_five_should_return_true_when_all_are_multiples_of_5_and_has_null_element_passed() {
     List<Integer> integers = Arrays.asList(5, 20, 100, null, 350, 60);
     assertThat(streamsPractice.isAllMultiplesOfFive(integers)).isTrue();
   }
@@ -89,13 +90,15 @@ class StreamsPracticeTest {
   }
 
   @Test
-  void test_check_odd_elements_are_present_should_return_true_when_list_contains_odd_element_are_passed() {
+  void
+      test_check_odd_elements_are_present_should_return_true_when_list_contains_odd_element_are_passed() {
     List<Integer> integers = List.of(-5, 0, 10, -134, 9);
     assertThat(streamsPractice.checkIfOddElementsArePresent(integers)).isTrue();
   }
 
   @Test
-  void test_check_odd_elements_are_present_should_return_false_when_list_does_not_contain_odd_element_are_passed() {
+  void
+      test_check_odd_elements_are_present_should_return_false_when_list_does_not_contain_odd_element_are_passed() {
     List<Integer> integers = List.of(44, -10, 10, 90);
     assertThat(streamsPractice.checkIfOddElementsArePresent(integers)).isFalse();
   }
@@ -113,7 +116,8 @@ class StreamsPracticeTest {
   }
 
   @Test
-  void test_double_elements_with_collectors_should_double_each_element_when_valid_integers_are_passed() {
+  void
+      test_double_elements_with_collectors_should_double_each_element_when_valid_integers_are_passed() {
     List<Integer> integers = List.of(-5, 10, 0, 34, 9);
     assertThat(streamsPractice.multiplyElementsWithCollector(integers, 2))
         .hasSize(5)
@@ -127,7 +131,8 @@ class StreamsPracticeTest {
   }
 
   @Test
-  void test_count_elements_that_match_criteria_should_return_correct_count_when_valid_integers_even_number_criteria_are_passed() {
+  void
+      test_count_elements_that_match_criteria_should_return_correct_count_when_valid_integers_even_number_criteria_are_passed() {
     List<Integer> integers = List.of(-5, 10, 0, 34, 9);
     Predicate<Integer> evenNumberCriteria = (element) -> element % 2 == 0;
     assertThat(streamsPractice.countElementsThatMatchCriteria(integers, evenNumberCriteria))
@@ -135,7 +140,8 @@ class StreamsPracticeTest {
   }
 
   @Test
-  void test_count_elements_that_match_criteria_should_return_zero_when_only_odd_integers_with_even_number_criteria_are_passed() {
+  void
+      test_count_elements_that_match_criteria_should_return_zero_when_only_odd_integers_with_even_number_criteria_are_passed() {
     List<Integer> integers = List.of(-15, 101, 9, 341, 91);
     Predicate<Integer> evenNumberCriteria = (element) -> element % 2 == 0;
     assertThat(streamsPractice.countElementsThatMatchCriteria(integers, evenNumberCriteria))
@@ -191,7 +197,8 @@ class StreamsPracticeTest {
   }
 
   @Test
-  void test_check_if_unique_elements_only_should_return_true_when_list_does_not_contains_duplicate() {
+  void
+      test_check_if_unique_elements_only_should_return_true_when_list_does_not_contains_duplicate() {
     List<String> words = List.of("Zebra", "Kangaroo", "Elephant");
     assertThat(streamsPractice.checkIfUniqueElementsOnly(words)).isTrue();
   }
@@ -212,10 +219,11 @@ class StreamsPracticeTest {
   @Test
   void
       test_get_unique_words_from_sentences_should_return_unique_words_when_valid_list_of_sentences_are_passed() {
-    List<String> lines = List.of(
-        "This is first sentence of sample statement",
-        "This is a test data for unique words function",
-        "Sample data will help in verifying data");
+    List<String> lines =
+        List.of(
+            "This is first sentence of sample statement",
+            "This is a test data for unique words function",
+            "Sample data will help in verifying data");
     assertThat(streamsPractice.getUniqueWordsFromSentences(lines))
         .isEqualTo(
             List.of(
@@ -357,13 +365,13 @@ class StreamsPracticeTest {
   void
       test_get_employee_type_code_with_rank_above_should_return_empty_list_when_rank_limit_is_positive() {
     assertThat(streamsPractice.getEmployeeTypeCodeWithRankAbove(6))
-        .hasSize(3).
-        doesNotContain(EmployeeTypeCode.SUBJECT_MATTER_EXPERT)
+        .hasSize(3)
+        .doesNotContain(EmployeeTypeCode.SUBJECT_MATTER_EXPERT)
         .isEqualTo(
             List.of(
                 EmployeeTypeCode.C_SUITE,
                 EmployeeTypeCode.DIRECTOR,
-            EmployeeTypeCode.RELEASE_TRAIN_ENGINEER));
+                EmployeeTypeCode.RELEASE_TRAIN_ENGINEER));
   }
 
   @Test

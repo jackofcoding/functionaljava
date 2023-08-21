@@ -32,10 +32,11 @@ public class CollectorsPractice {
 
   public Map<String, Integer> getPersonFullNameAndAge(List<Person> people) {
     // Assumption: no field of model is null
-    return people.stream().collect(
-        Collectors.toMap(
-            person -> String.join(" ", person.getFirstName(), person.getLastName()),
-            person -> Period.between(person.getDateOfBirth(), LocalDate.now()).getYears()));
+    return people.stream()
+        .collect(
+            Collectors.toMap(
+              person -> String.join(" ", person.getFirstName(), person.getLastName()),
+              person -> Period.between(person.getDateOfBirth(), LocalDate.now()).getYears()));
   }
 
   public Map<Boolean, List<String>> partitionPeopleByAgeGroupAbove18(List<Person> people) {
