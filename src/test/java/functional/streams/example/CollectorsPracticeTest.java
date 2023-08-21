@@ -1,4 +1,4 @@
-package functional.streams.samples;
+package functional.streams.example;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -74,15 +74,15 @@ class CollectorsPracticeTest {
         .isEqualTo(
             Map.of(
                 true,
-                    List.of(
-                        "Jane Doe",
-                        "Jason Smith",
-                        "Anton Jackson",
-                        "Arthur Flintstone",
-                        "Mary Stewart",
-                        "Kevin Malone",
-                        "Jim Patrick",
-                        "Lori Jamieson"),
+                  List.of(
+                      "Jane Doe",
+                      "Jason Smith",
+                      "Anton Jackson",
+                      "Arthur Flintstone",
+                      "Mary Stewart",
+                      "Kevin Malone",
+                      "Jim Patrick",
+                      "Lori Jamieson"),
                 false,
                 List.of("Mary Jane", "Prince Ray", "Samuel Jackson")));
   }
@@ -92,7 +92,7 @@ class CollectorsPracticeTest {
     assertThat(collectorsPractice.partitionPeopleByAgeGroupAbove18(Collections.emptyList()))
         .isEqualTo(
             Map.of(
-            true, Collections.emptyList(),
-            false, Collections.emptyList()));
+        true, Collections.emptyList(),
+        false, Collections.emptyList()));
   }
 }

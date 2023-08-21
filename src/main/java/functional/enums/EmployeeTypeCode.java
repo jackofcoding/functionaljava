@@ -1,7 +1,6 @@
 package functional.enums;
 
 public enum EmployeeTypeCode {
-
   C_SUITE("CSE", 1),
   DIRECTOR("DIR", 3),
   ANALYST("AYT", 9),
@@ -22,5 +21,4 @@ public enum EmployeeTypeCode {
   public Integer getRank() {
     return this.rank;
   }
-
 }
