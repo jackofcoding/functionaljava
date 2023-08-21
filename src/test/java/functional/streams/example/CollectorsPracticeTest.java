@@ -79,14 +79,14 @@ class CollectorsPracticeTest {
             Map.of(
                 true,
                 List.of(
-                      "Jane Doe",
-                      "Jason Smith",
-                      "Anton Jackson",
-                      "Arthur Flintstone",
-                      "Mary Stewart",
-                      "Kevin Malone",
-                      "Jim Patrick",
-                      "Lori Jamieson"),
+                    "Jane Doe",
+                    "Jason Smith",
+                    "Anton Jackson",
+                    "Arthur Flintstone",
+                    "Mary Stewart",
+                    "Kevin Malone",
+                    "Jim Patrick",
+                    "Lori Jamieson"),
                 false,
                 List.of("Mary Jane", "Prince Ray", "Samuel Jackson")));
   }

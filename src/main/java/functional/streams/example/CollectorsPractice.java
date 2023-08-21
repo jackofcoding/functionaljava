@@ -35,8 +35,8 @@ public class CollectorsPractice {
     return people.stream()
         .collect(
             Collectors.toMap(
-              person -> String.join(" ", person.getFirstName(), person.getLastName()),
-              person -> Period.between(person.getDateOfBirth(), LocalDate.now()).getYears()));
+                person -> String.join(" ", person.getFirstName(), person.getLastName()),
+                person -> Period.between(person.getDateOfBirth(), LocalDate.now()).getYears()));
   }
 
   public Map<Boolean, List<String>> partitionPeopleByAgeGroupAbove18(List<Person> people) {

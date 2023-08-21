@@ -421,4 +421,3 @@ class StreamsPracticeTest {
     assertThat(phoneNumbersFromFile).isEmpty();
   }
 }
-
