@@ -232,8 +232,7 @@ class StreamsPracticeTest {
                 "will",
                 "help",
                 "in",
-                "verifying")
-        );
+                "verifying"));
   }
 
   @Test

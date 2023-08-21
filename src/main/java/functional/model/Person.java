@@ -12,5 +12,4 @@ public class Person {
 
   LocalDate dateOfBirth;
   private String firstName, lastName;
-
 }

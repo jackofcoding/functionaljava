@@ -16,10 +16,7 @@ public class StreamsPractice {
 
   public int sumOfIntegers(List<Integer> integers) {
     Objects.requireNonNull(integers, "list must not be null");
-    return integers.stream()
-        .filter(Objects::nonNull)
-        .mapToInt(Integer::intValue)
-        .sum();
+    return integers.stream().filter(Objects::nonNull).mapToInt(Integer::intValue).sum();
   }
 
   public Double averageOfIntegers(List<Integer> integers) {
@@ -48,7 +45,8 @@ public class StreamsPractice {
   public List<Integer> doubleElements(List<Integer> integers) {
     Objects.requireNonNull(integers, "list must not be null");
     return integers.stream()
-        .filter(Objects::nonNull).map(e -> e * 2)
+        .filter(Objects::nonNull)
+        .map(e -> e * 2)
         .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
   }
 
@@ -76,7 +74,7 @@ public class StreamsPractice {
 
   public Boolean checkIfUniqueElementsOnly(List<String> words) {
     Objects.requireNonNull(words, "words must not be null");
-    //TODO: Find a better way
+    // TODO: Find a better way
     return words.stream()
         .filter(Objects::nonNull)
         .dropWhile(e -> Collections.frequency(words, e) == 1)
@@ -117,7 +115,7 @@ public class StreamsPractice {
   }
 
   public List<Integer> generateFirstNFibonacciNumbers(long limit) {
-    return Stream.iterate(new int[]{0, 1}, n -> new int[]{n[1], n[0] + n[1]})
+    return Stream.iterate(new int[] {0, 1}, n -> new int[] {n[1], n[0] + n[1]})
         .limit(limit)
         .map(n -> n[0])
         .toList();
@@ -144,10 +142,11 @@ public class StreamsPractice {
     Objects.requireNonNull(words, "words must not be null");
     return words.stream()
         .filter(
-            word -> Objects.nonNull(word)
-                && Objects.nonNull(suffix)
-                && !word.isBlank()
-                && !suffix.isBlank())
+            word ->
+                Objects.nonNull(word)
+                  && Objects.nonNull(suffix)
+                  && !word.isBlank()
+                  && !suffix.isBlank())
         .map(word -> String.join(" ", word, suffix))
         .toList();
   }
@@ -161,7 +160,7 @@ public class StreamsPractice {
             word -> {
               String onlyDigits = word.replaceAll("\\D", "");
               return onlyDigits.substring(onlyDigits.length() - 10);
-        })
+          })
         .toList();
   }
 
