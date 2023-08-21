@@ -16,31 +16,34 @@ public class CollectorsPractice {
 
   public Map<String, Long> getWordsFrequency(List<String> words) {
     Objects.requireNonNull(words, "words must not be null");
-    return words.stream().filter(Objects::nonNull).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+    return words.stream().filter(Objects::nonNull)
+        .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
   }
 
   public Map<Integer, Set<String>> groupWordsByFrequency(List<String> words) {
     Objects.requireNonNull(words, "words must not be null");
-    return words.stream().filter(Objects::nonNull).collect(Collectors.groupingBy(e -> Collections.frequency(words, e), HashMap::new, Collectors.toSet()));
+    return words.stream().filter(Objects::nonNull).collect(
+        Collectors.groupingBy(e -> Collections.frequency(words, e), HashMap::new,
+            Collectors.toSet()));
   }
 
   public Map<String, Integer> getPersonFullNameAndAge(List<Person> people) {
     //Assumption: no field of model is null
     return people.stream().collect(
         Collectors.toMap(
-                person -> String.join(" ", person.getFirstName(), person.getLastName()),
-              person -> Period.between(person.getDateOfBirth(), LocalDate.now()).getYears()
+            person -> String.join(" ", person.getFirstName(), person.getLastName()),
+            person -> Period.between(person.getDateOfBirth(), LocalDate.now()).getYears()
         ));
   }
 
   public Map<Boolean, List<String>> partitionPeopleByAgeGroupAbove18(List<Person> people) {
     //Assumption: no field of model is null
     return people.stream().collect(Collectors.partitioningBy(
-            person -> Period.between(person.getDateOfBirth(), LocalDate.now()).getYears() >= 18,
-            Collectors.mapping(
-                person -> String.join(" ", person.getFirstName(), person.getLastName()),
-                Collectors.toList()
-            )
-        ));
+        person -> Period.between(person.getDateOfBirth(), LocalDate.now()).getYears() >= 18,
+        Collectors.mapping(
+            person -> String.join(" ", person.getFirstName(), person.getLastName()),
+            Collectors.toList()
+        )
+    ));
   }
 }

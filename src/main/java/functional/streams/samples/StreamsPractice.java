@@ -16,38 +16,47 @@ public class StreamsPractice {
 
   public int sumOfIntegers(List<Integer> integers) {
     Objects.requireNonNull(integers, "list must not be null");
-    return integers.stream().filter(Objects::nonNull).mapToInt(Integer::intValue).sum();
+    return integers.stream()
+        .filter(Objects::nonNull)
+        .mapToInt(Integer::intValue)
+        .sum();
   }
 
   public Double averageOfIntegers(List<Integer> integers) {
     Objects.requireNonNull(integers, "list must not be null");
-    return integers.stream().filter(Objects::nonNull).mapToInt(Integer::valueOf).average()
+    return integers.stream()
+        .filter(Objects::nonNull)
+        .mapToInt(Integer::valueOf)
+        .average()
         .orElse(0.0);
   }
 
   public Boolean isAllMultiplesOfFive(List<Integer> integers) {
     Objects.requireNonNull(integers, "list must not be null");
-    return integers.stream().filter(Objects::nonNull)
+    return integers.stream()
+        .filter(Objects::nonNull)
         .allMatch(e -> Integer.remainderUnsigned(e, 5) == 0);
   }
 
   public Boolean checkIfOddElementsArePresent(List<Integer> integers) {
     Objects.requireNonNull(integers, "list must not be null");
-    return integers.stream().filter(Objects::nonNull)
+    return integers.stream()
+        .filter(Objects::nonNull)
         .anyMatch(e -> Integer.remainderUnsigned(e, 2) > 0);
   }
 
   public List<Integer> doubleElements(List<Integer> integers) {
     Objects.requireNonNull(integers, "list must not be null");
-    return integers.stream().filter(Objects::nonNull).map(e -> e * 2)
+    return integers.stream()
+        .filter(Objects::nonNull).map(e -> e * 2)
         .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
   }
 
   /*
-      Same as above, but with collectors
+     Same as above, but with collectors
    */
   public List<Integer> multiplyElementsWithCollector(List<Integer> integers, int multiple) {
-    //TODO: Range problem
+    // TODO: Range problem
     Objects.requireNonNull(integers, "list must not be null");
     return integers.stream().map(e -> e * multiple).collect(Collectors.toList());
   }
@@ -68,26 +77,33 @@ public class StreamsPractice {
   public Boolean checkIfUniqueElementsOnly(List<String> words) {
     Objects.requireNonNull(words, "words must not be null");
     //TODO: Find a better way
-    return words.stream().filter(Objects::nonNull)
+    return words.stream()
+        .filter(Objects::nonNull)
         .dropWhile(e -> Collections.frequency(words, e) == 1)
-        .toList().isEmpty();
+        .toList()
+        .isEmpty();
   }
 
   public List<String> getUniqueWordsFromSentences(List<String> lines) {
     Objects.requireNonNull(lines, "lines must not be null");
-    return lines.stream().filter(Objects::nonNull).flatMap(e -> Arrays.stream(e.split("\\s+")))
-        .distinct().toList();
+    return lines.stream()
+        .filter(Objects::nonNull)
+        .flatMap(e -> Arrays.stream(e.split("\\s+")))
+        .distinct()
+        .toList();
   }
 
   public int min(List<Integer> integers) {
     Objects.requireNonNull(integers, "integers must not be null");
-    return integers.stream().min((Integer::compare))
+    return integers.stream()
+        .min((Integer::compare))
         .orElseThrow(() -> new NoSuchElementException("No Min element found"));
   }
 
   public int max(List<Integer> integers) {
     Objects.requireNonNull(integers, "integers must not be null");
-    return integers.stream().max((Integer::compare))
+    return integers.stream()
+        .max((Integer::compare))
         .orElseThrow(() -> new NoSuchElementException("No Max element found"));
   }
 
@@ -97,41 +113,54 @@ public class StreamsPractice {
 
   public String[] transformIntegersToString(List<Integer> integers) {
     Objects.requireNonNull(integers, "integers must not be null");
-    return integers.stream().map(Object::toString).toArray(String []::new);
+    return integers.stream().map(Object::toString).toArray(String[]::new);
   }
 
   public List<Integer> generateFirstNFibonacciNumbers(long limit) {
     return Stream.iterate(new int[]{0, 1}, n -> new int[]{n[1], n[0] + n[1]})
-        .limit(limit).map(n -> n[0]).toList();
+        .limit(limit)
+        .map(n -> n[0])
+        .toList();
   }
 
   public List<String> convertAnyCaseToTitleCase(List<String> words) {
     Objects.requireNonNull(words, "words must not be null");
-    return words.stream().filter(Objects::nonNull).filter(word -> word.length() > 0
-            && !word.isBlank()
-            && Character.isAlphabetic(word.charAt(0)) )
-        .map( word -> Character.toTitleCase(word.charAt(0)) + word.substring(1).toLowerCase())
+    return words.stream()
+        .filter(Objects::nonNull)
+        .filter(
+            word -> word.length() > 0 && !word.isBlank() && Character.isAlphabetic(word.charAt(0)))
+        .map(word -> Character.toTitleCase(word.charAt(0)) + word.substring(1).toLowerCase())
         .toList();
   }
 
   public List<EmployeeTypeCode> getEmployeeTypeCodeWithRankAbove(Integer rankLimit) {
-    return Arrays.stream(EmployeeTypeCode.values()).filter(e -> rankLimit > 0)
-        .filter( e -> e.getRank() < rankLimit).toList();
+    return Arrays.stream(EmployeeTypeCode.values())
+        .filter(e -> rankLimit > 0)
+        .filter(e -> e.getRank() < rankLimit)
+        .toList();
   }
 
   public List<String> suffixWord(List<String> words, String suffix) {
     Objects.requireNonNull(words, "words must not be null");
-    return words.stream().filter(word -> Objects.nonNull(word) && Objects.nonNull(suffix)&& !word.isBlank() && !suffix.isBlank())
-        .map(word -> String.join(" ", word, suffix)).toList();
+    return words.stream()
+        .filter(
+            word -> Objects.nonNull(word)
+                && Objects.nonNull(suffix)
+                && !word.isBlank()
+                && !suffix.isBlank())
+        .map(word -> String.join(" ", word, suffix))
+        .toList();
   }
 
-  //Valid Phone Number Format : ddd-ddd-dddd
+  // Valid Phone Number Format : ddd-ddd-dddd
   public List<String> getValidPhoneNumbersFromFile(List<String> sentences) {
-    return sentences.stream().flatMap( lines -> Arrays.stream(lines.split("\\s+")))
-        .filter(word -> word.matches(".*\\d{3}-\\d{3}-\\d{4}.*" ))
-        .map(word -> {
-          String onlyDigits = word.replaceAll("\\D", "");
-          return onlyDigits.substring(onlyDigits.length() - 10);
+    return sentences.stream()
+        .flatMap(lines -> Arrays.stream(lines.split("\\s+")))
+        .filter(word -> word.matches(".*\\d{3}-\\d{3}-\\d{4}.*"))
+        .map(
+            word -> {
+              String onlyDigits = word.replaceAll("\\D", "");
+              return onlyDigits.substring(onlyDigits.length() - 10);
         })
         .toList();
   }

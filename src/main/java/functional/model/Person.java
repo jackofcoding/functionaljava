@@ -10,7 +10,7 @@ import lombok.ToString;
 @ToString
 public class Person {
 
-  private String firstName, lastName;
   LocalDate dateOfBirth;
+  private String firstName, lastName;
 
 }
