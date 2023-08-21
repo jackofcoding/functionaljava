@@ -33,7 +33,5 @@
 ### Setup
 
 - Ensure you are using google coding style guide, which can found based on editor.
-    -
-    IntelliJ [style guide](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml)
-    -
-    Eclipse [style guide](https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml)
+    - IntelliJ [style guide](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml)
+    - Eclipse [style guide](https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml)
