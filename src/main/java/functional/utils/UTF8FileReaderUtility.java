@@ -17,8 +17,7 @@ public class UTF8FileReaderUtility {
     Objects.requireNonNull(fileName, "fileName cannot be null");
     return Try.of(
             () ->
-                Files.readAllLines(Path.of(directory, fileName))
-                    .stream()
+                Files.readAllLines(Path.of(directory, fileName)).stream()
                     .flatMap(lines -> Arrays.stream(lines.split("[.]")))
                     .map(String::trim)
                     .toList())

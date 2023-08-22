@@ -407,7 +407,8 @@ class StreamsPracticeTest {
   void
       test_get_valid_phone_numbers_from_file_should_return_phone_numbers_when_valid_file_is_passed() {
     List<String> lines =
-        UTF8FileReaderUtility.getFileContentsAsSentencesFromResources("src/main/resources", "PhoneNumberSample.txt");
+        UTF8FileReaderUtility.getFileContentsAsSentencesFromResources(
+            "src/main/resources", "PhoneNumberSample.txt");
     List<String> phoneNumbersFromFile = streamsPractice.getValidPhoneNumbersFromFile(lines);
     assertThat(phoneNumbersFromFile)
         .hasSize(3)
