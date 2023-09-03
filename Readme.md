@@ -12,6 +12,12 @@
   introduced in java 8, a lot of how we code has changed.
 - Leveraging [declarative programming](https://en.wikipedia.org/wiki/Declarative_programming)
   through lambda is the way to go in java world.
+
+### Inspiration
+
+- [Lambda HOL](https://github.com/stuart-marks/LambdaHOLv2)
+- [Bash Bible](https://github.com/dylanaraps/pure-bash-bible)
+
 ### References
 #### Some good beginner level tutorials
   - Oracle [tutorial](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html).
