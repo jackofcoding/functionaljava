@@ -61,8 +61,7 @@ public class CollectorsPractice {
     Preconditions.checkPositionIndex(range, integers.size());
     AtomicInteger counter = new AtomicInteger();
     return integers.stream()
-        .collect(
-            Collectors.groupingBy(element -> counter.getAndIncrement()/range))
+        .collect(Collectors.groupingBy(element -> counter.getAndIncrement() / range))
         .values();
   }
 }
