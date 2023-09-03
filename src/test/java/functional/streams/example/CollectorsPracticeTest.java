@@ -1,9 +1,11 @@
 package functional.streams.example;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import functional.model.Person;
 import functional.utils.SampleDataProvider;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -99,5 +101,91 @@ class CollectorsPracticeTest {
             Map.of(
                 true, Collections.emptyList(),
                 false, Collections.emptyList()));
+  }
+
+  @Test
+  void
+      test_partition_list_by_range_should_return_sublist_when_valid_even_list_count_is_passed_with_odd_valid_range() {
+    Collection<List<Integer>> partitionedByRange =
+        collectorsPractice.partitionListByRange(List.of(1, 3, 4, 5, 6, 0, 10, 11), 3);
+    List<List<Integer>> resultant = List.of(List.of(1, 3, 4), List.of(5, 6, 0), List.of(10, 11));
+
+    assertThat(partitionedByRange.stream().toList()).isEqualTo(resultant);
+  }
+
+  @Test
+  void
+      test_partition_list_by_range_should_return_sublist_when_valid_even_list_count_is_passed_with_even_valid_range() {
+    Collection<List<Integer>> partitionedByRange =
+        collectorsPractice.partitionListByRange(List.of(1, 3, 4, 5, 6, 0, 10, 11), 4);
+    List<List<Integer>> resultant = List.of(List.of(1, 3, 4, 5), List.of(6, 0, 10, 11));
+
+    assertThat(partitionedByRange.stream().toList()).isEqualTo(resultant);
+  }
+
+  @Test
+  void
+      test_partition_list_by_range_should_return_sublist_when_valid_odd_list_count_is_passed_with_odd_valid_range() {
+    Collection<List<Integer>> partitionedByRange =
+        collectorsPractice.partitionListByRange(List.of(1, 3, 4, 12, 5, 6, 0, 10, 11), 3);
+    List<List<Integer>> resultant =
+        List.of(List.of(1, 3, 4), List.of(12, 5, 6), List.of(0, 10, 11));
+
+    assertThat(partitionedByRange.stream().toList()).isEqualTo(resultant);
+  }
+
+  @Test
+  void
+      test_partition_list_by_range_should_return_sublist_when_valid_odd_list_count_is_passed_with_even_valid_range() {
+    Collection<List<Integer>> partitionedByRange =
+        collectorsPractice.partitionListByRange(List.of(1, 3, 4, 12, 5, 6, 0, 10, 11), 4);
+    List<List<Integer>> resultant =
+        List.of(List.of(1, 3, 4, 12), List.of(5, 6, 0, 10), List.of(11));
+
+    assertThat(partitionedByRange.stream().toList()).isEqualTo(resultant);
+  }
+
+  @Test
+  void test_partition_list_by_range_should_return_empty_list_when_empty_list_is_passed() {
+    Collection<List<Integer>> partitionedByRange =
+        collectorsPractice.partitionListByRange(Collections.emptyList(), 0);
+
+    assertThat(partitionedByRange.stream().toList()).isEqualTo(Collections.emptyList());
+  }
+
+  @Test
+  void
+      test_partition_list_by_range_should_throw_exception_when_range_is_invalid_and_input_is_empty() {
+    assertThatThrownBy(() -> collectorsPractice.partitionListByRange(Collections.emptyList(), 1))
+        .isInstanceOf(IndexOutOfBoundsException.class)
+        .hasMessage("index (1) must not be greater than size (0)");
+  }
+
+  @Test
+  void
+      test_partition_list_by_range_should_throw_exception_when_valid_list_is_passed_with_negative_range() {
+    assertThatThrownBy(
+            () -> collectorsPractice.partitionListByRange(List.of(1, 3, 4, 5, 6, 0, 10, 11), -1))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("range should be positive");
+  }
+
+  @Test
+  void
+      test_partition_list_by_range_should_return_same_list_when_valid_list_is_passed_with_range_is_equal_to_size_less_by_1() {
+    Collection<List<Integer>> partitionedByRange =
+        collectorsPractice.partitionListByRange(List.of(1, 3, 4, 5, 6, 0, 10, 11), 8);
+
+    assertThat(partitionedByRange.stream().toList())
+        .isEqualTo(List.of(List.of(1, 3, 4, 5, 6, 0, 10, 11)));
+  }
+
+  @Test
+  void
+      test_partition_list_by_range_should_return_throw_exception_when_valid_list_is_passed_with_range_is_equal_to_zero() {
+    assertThatThrownBy(
+            () -> collectorsPractice.partitionListByRange(List.of(1, 3, 4, 5, 6, 0, 10, 11), -1))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("range should be positive");
   }
 }
