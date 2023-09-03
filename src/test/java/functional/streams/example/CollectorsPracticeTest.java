@@ -145,7 +145,6 @@ class CollectorsPracticeTest {
     assertThat(partitionedByRange.stream().toList()).isEqualTo(resultant);
   }
 
-
   @Test
   void test_partition_list_by_range_should_return_empty_list_when_empty_list_is_passed() {
     Collection<List<Integer>> partitionedByRange =
