@@ -426,21 +426,16 @@ class StreamsPracticeTest {
   void test_union_should_return_empty_list_when_both_list_are_empty_passed() {
     List<Integer> list1 = Collections.emptyList();
     List<Integer> list2 = Collections.emptyList();
-    assertThat(streamsPractice.union(list1, list2))
-        .isEmpty();
+    assertThat(streamsPractice.union(list1, list2)).isEmpty();
   }
 
   @Test
   void test_union_should_return_valid_list_when_either_empty_list_is_passed() {
     List<Integer> list1 = Collections.emptyList();
     List<Integer> list2 = List.of(1, 2, 3);
-    assertThat(streamsPractice.union(list1, list2))
-        .hasSize(3)
-        .isEqualTo(List.of(1, 2, 3));
+    assertThat(streamsPractice.union(list1, list2)).hasSize(3).isEqualTo(List.of(1, 2, 3));
 
-    assertThat(streamsPractice.union(list2, list1))
-        .hasSize(3)
-        .isEqualTo(List.of(1, 2, 3));
+    assertThat(streamsPractice.union(list2, list1)).hasSize(3).isEqualTo(List.of(1, 2, 3));
   }
 
   @Test
@@ -460,9 +455,7 @@ class StreamsPracticeTest {
   void test_union_should_return_valid_list_if_valid_input_lists_are_passed() {
     List<Integer> list1 = List.of(1, 2, 3);
     List<Integer> list2 = List.of(4, 5, 6);
-    assertThat(streamsPractice.union(list1, list2))
-        .hasSize(6)
-        .isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+    assertThat(streamsPractice.union(list1, list2)).hasSize(6).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
   }
 
   @Test
@@ -478,11 +471,9 @@ class StreamsPracticeTest {
   void test_intersection_should_return_empty_list_if_one_list_is_empty_is_passed() {
     List<String> list1 = Collections.emptyList();
     List<String> list2 = List.of("hello", "world", "first", "program");
-    assertThat(streamsPractice.intersection(list1, list2))
-        .isEmpty();
+    assertThat(streamsPractice.intersection(list1, list2)).isEmpty();
 
-    assertThat(streamsPractice.intersection(list2, list1))
-        .isEmpty();
+    assertThat(streamsPractice.intersection(list2, list1)).isEmpty();
   }
 
   @Test
@@ -502,17 +493,13 @@ class StreamsPracticeTest {
   void test_intersection_should_return_valid_result_if_all_input_list_are_valid() {
     List<String> list1 = List.of("hello", "Hello", "puny", "humans");
     List<String> list2 = List.of("hello", "world", "first", "program");
-    assertThat(streamsPractice.intersection(list1, list2))
-        .hasSize(1)
-        .isEqualTo(List.of("hello"));
+    assertThat(streamsPractice.intersection(list1, list2)).hasSize(1).isEqualTo(List.of("hello"));
   }
 
   @Test
   void test_intersection_should_return_unique_intersection_result_if_duplicate_elements_are_present() {
     List<String> list1 = List.of("hello", "hello", "puny", "humans");
     List<String> list2 = List.of("hello", "world", "first", "program");
-    assertThat(streamsPractice.intersection(list1, list2))
-        .hasSize(1)
-        .isEqualTo(List.of("hello"));
+    assertThat(streamsPractice.intersection(list1, list2)).hasSize(1).isEqualTo(List.of("hello"));
   }
 }
