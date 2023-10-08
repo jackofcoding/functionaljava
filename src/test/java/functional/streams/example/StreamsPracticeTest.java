@@ -459,7 +459,8 @@ class StreamsPracticeTest {
   }
 
   @Test
-  void test_union_should_return_valid_list_if_valid_input_lists_with_duplicate_elements_are_passed() {
+  void
+      test_union_should_return_valid_list_if_valid_input_lists_with_duplicate_elements_are_passed() {
     List<Integer> list1 = List.of(1, 2, 3);
     List<Integer> list2 = List.of(1, 2, 3, 4);
     assertThat(streamsPractice.union(list1, list2))
@@ -497,7 +498,8 @@ class StreamsPracticeTest {
   }
 
   @Test
-  void test_intersection_should_return_unique_intersection_result_if_duplicate_elements_are_present() {
+  void
+      test_intersection_should_return_unique_intersection_result_if_duplicate_elements_are_present() {
     List<String> list1 = List.of("hello", "hello", "puny", "humans");
     List<String> list2 = List.of("hello", "world", "first", "program");
     assertThat(streamsPractice.intersection(list1, list2)).hasSize(1).isEqualTo(List.of("hello"));
