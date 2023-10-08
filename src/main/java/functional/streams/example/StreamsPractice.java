@@ -175,7 +175,7 @@ public class StreamsPractice {
   public List<String> intersection(List<String> list1, List<String> list2) {
     Objects.requireNonNull(list1, "list1 must not be null");
     Objects.requireNonNull(list2, "list2 must not be null");
-    if(list1.isEmpty() || list2.isEmpty()) return Collections.emptyList();
+    if (list1.isEmpty() || list2.isEmpty()) return Collections.emptyList();
     Set<String> intersect =  new HashSet<>(list1);
     intersect.retainAll(list2);
     return new ArrayList<>(intersect);
