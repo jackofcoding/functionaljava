@@ -180,5 +180,4 @@ public class StreamsPractice {
     intersect.retainAll(list2);
     return new ArrayList<>(intersect);
   }
-
 }
