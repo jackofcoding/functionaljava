@@ -4,10 +4,12 @@ import functional.enums.EmployeeTypeCode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Random;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -159,5 +161,23 @@ public class StreamsPractice {
               return onlyDigits.substring(onlyDigits.length() - 10);
             })
         .toList();
+  }
+
+  public List<Integer> union(List<Integer> list1, List<Integer> list2) {
+    Objects.requireNonNull(list1, "list1 must not be null");
+    Objects.requireNonNull(list2, "list2 must not be null");
+    List<Integer> combined = new ArrayList<>();
+    combined.addAll(list1);
+    combined.addAll(list2);
+    return combined;
+  }
+
+  public List<String> intersection(List<String> list1, List<String> list2) {
+    Objects.requireNonNull(list1, "list1 must not be null");
+    Objects.requireNonNull(list2, "list2 must not be null");
+    if (list1.isEmpty() || list2.isEmpty()) return Collections.emptyList();
+    Set<String> intersect = new HashSet<>(list1);
+    intersect.retainAll(list2);
+    return new ArrayList<>(intersect);
   }
 }
