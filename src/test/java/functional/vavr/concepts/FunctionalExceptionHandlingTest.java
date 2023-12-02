@@ -19,26 +19,22 @@ class FunctionalExceptionHandlingTest {
 
   @Test
   public void test_divide_should_not_throw_exception() {
-    assertThatCode(() -> classUnderTest.divide(2, 0))
-        .doesNotThrowAnyException();
+    assertThatCode(() -> classUnderTest.divide(2, 0)).doesNotThrowAnyException();
   }
 
   @Test
   public void test_divide_should_return_valid_result() {
-    assertThat(classUnderTest.divide(5, 2).get())
-        .isEqualTo(2.5);
+    assertThat(classUnderTest.divide(5, 2).get()).isEqualTo(2.5);
   }
 
   @Test
   public void test_validateURL_should_not_throw_exception_when_url_is_empty() {
-    assertThatCode(() -> classUnderTest.validateURL(""))
-        .doesNotThrowAnyException();
+    assertThatCode(() -> classUnderTest.validateURL("")).doesNotThrowAnyException();
   }
 
   @Test
   public void test_validateURL_should_not_throw_exception_when_url_is_invalid() {
-    assertThatCode(() -> classUnderTest.validateURL("www.google.com:"))
-        .doesNotThrowAnyException();
+    assertThatCode(() -> classUnderTest.validateURL("www.google.com:")).doesNotThrowAnyException();
 
     assertThatCode(() -> classUnderTest.validateURL("//:www.google.com/path"))
         .doesNotThrowAnyException();
@@ -50,5 +46,4 @@ class FunctionalExceptionHandlingTest {
         .isInstanceOf(URL.class)
         .isEqualTo(Try.of(() -> new URL("http://www.google.com")).get());
   }
-
 }

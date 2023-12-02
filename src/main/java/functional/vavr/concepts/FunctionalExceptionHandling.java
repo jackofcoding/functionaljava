@@ -28,5 +28,4 @@ public class FunctionalExceptionHandling {
         .onSuccess(success -> logger.info("URL {} parsed successfully", url))
         .onFailure(error -> logger.error("Error occurred {} ", error.getMessage()));
   }
-
 }
