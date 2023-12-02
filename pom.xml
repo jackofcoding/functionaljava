@@ -21,14 +21,15 @@
       <version>0.10.4</version>
     </dependency>
     <dependency>
-      <artifactId>logback-core</artifactId>
-      <groupId>ch.qos.logback</groupId>
-      <version>1.4.11</version>
-    </dependency>
-    <dependency>
       <artifactId>slf4j-api</artifactId>
       <groupId>org.slf4j</groupId>
       <version>2.0.7</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.4.11</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <artifactId>lombok</artifactId>
