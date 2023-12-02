@@ -1,6 +1,5 @@
 package functional.vavr.concepts;
 
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
@@ -30,7 +29,7 @@ class VavrFunctionsFeaturesTest {
 
   @Test
   void test_compose_first_ops_must_not_be_null() {
-    Function1<Integer, Integer> f2 = (a) -> a * 10 ;
+    Function1<Integer, Integer> f2 = (a) -> a * 10;
     assertThatThrownBy(() -> vavrFunctionsFeatures.compose(List.of("1", "2", "5", "100"), null, f2))
         .isInstanceOf(NullPointerException.class)
         .hasMessage("firstOps cannot be null");
@@ -39,7 +38,7 @@ class VavrFunctionsFeaturesTest {
   @Test
   void test_compose_second_ops_must_not_be_null() {
     Function1<String, Integer> f1 = Integer::parseInt;
-    assertThatThrownBy(() -> vavrFunctionsFeatures.compose(List.of("1", "2", "5", "100"), f1,null))
+    assertThatThrownBy(() -> vavrFunctionsFeatures.compose(List.of("1", "2", "5", "100"), f1, null))
         .isInstanceOf(NullPointerException.class)
         .hasMessage("secondOps cannot be null");
   }
