@@ -42,7 +42,7 @@ public class SampleDataProvider {
         Person.builder()
             .withFirstName("Mary")
             .withLastName("Jane")
-            .withDateOfBirth(LocalDate.of(2005, Month.OCTOBER, 15))
+            .withDateOfBirth(LocalDate.of(2008, Month.OCTOBER, 15))
             .build(),
         Person.builder()
             .withFirstName("Prince")
